@@ -39,13 +39,16 @@
 *Примечание: Укажите реальное доменное имя вашего сайта, если оно есть. Если нет — придумайте пример.*
 
 
-from transformers import AutoTokenizer, AutoModel import torch
-import numpy as np from sklearn.metrics.pairwise import cosine_similarity
+from transformers import AutoTokenizer, AutoModel
+import torch
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 # 1) Загрузка токенизатора и модели RuBERT
 model_checkpoint = 'DeepPavlov/rubert-base-cased'
 tokenizer = AutoTokenizer.from_pretrained (model_checkpoint)
 model = AutoModel. from_pretrained (model_checkpoint)
 model.eval()
+
 # 2) Функция для получения эмбеддингов (mean-pool ing + 12-нормализиия)
 def embed (texts):
 enc = tokenizer (texts, padding=True, truncation=True, max_length=64, return_tensors="pt")
@@ -53,6 +56,7 @@ with torch.no_grad():
 out = model (**enc). last_hidden_state
 emb = out.mean(dim=1).cpu()-numpy() # [batch, hidden]
 return emb / np.linalg-norn(emb, axis=1, keepdims=True)
+
 # 3) Подготовка базы FAQ
 faqq = L
 "Как быстро доставляется заказ?",
@@ -62,10 +66,12 @@ faq_a = L
 "Наш стандартный срок доставки — 3-5 рабочих дней.",
 "Гарантия 1 год, условия в документации.
 le, sospar Boanowen B Teverne 14 anen.
-* 4) Получение эмбеддингов для FAQ и запроса пользователя
+
+# 4) Получение эмбеддингов для FAQ и запроса пользователя
 emb_faq = embed (faq_q)
-use_9 - "Сколько ждать мой заказ?"
+useer_q - "Сколько ждать мой заказ?"
 emb_user = embed([user_q])
+
 # 5) Поиск наиболее похожего Вопроса
-= cosine_similarity (emb_user, emb_faq)[0]
+sim   = cosine_similarity (emb_user, emb_faq)[0]
 best_idx = int (sinargnax())
