@@ -86,3 +86,15 @@ data = {
 
 df = pd.DataFrame(data)
 print(df.head())
+
+
+  # преобразование нечисловых атрибутов в числовые
+print("До кодирования:")
+print(df[['gender']].head())
+
+# One-Hot Encoding
+df_encoded = pd.get_dummies(df, columns=['gender'])
+df_encoded = pd.get_dummies(df, columns=['gender'], drop_first=True)
+
+print("\nПосле кодирования:")
+print(df_encoded.head())
