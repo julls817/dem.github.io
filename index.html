@@ -74,49 +74,6 @@
 <p>Студент занимался 5 часов<p>
 <p>Прогноз баллов: 50.23<p>
 
-  import pandas as pd
-
-# Создание датасета с такими же данными
-data = {
-    'age': [36, 21, 38, 41, 40],
-    'gender': ['Female', 'Male', 'Male', 'Male', 'Female'],
-    'salary': [24842, 57922, 22381, 79001, 62060],
-    'credit_approved': [1, 0, 1, 1, 1]
-}
-
-df = pd.DataFrame(data)
-print(df.head())
-
-
-  # преобразование нечисловых атрибутов в числовые
-print("До кодирования:")
-print(df[['gender']].head())
-
-# One-Hot Encoding
-df_encoded = pd.get_dummies(df, columns=['gender'])
-df_encoded = pd.get_dummies(df, columns=['gender'], drop_first=True)
-
-print("\nПосле кодирования:")
-print(df_encoded.head())
-
-
-  import pandas as pd
-
-# Создание исходного датасета
-data = {
-    'age': [36, 21, 38, 41, 40],
-    'gender': ['Female', 'Male', 'Male', 'Male', 'Female'],
-    'salary': [24842, 57922, 22381, 79001, 62060],
-    'credit_approved': [1, 0, 1, 1, 1]
-}
-
-df = pd.DataFrame(data)
-
-# One-Hot Encoding с удалением первого столбца
-df_encoded = pd.get_dummies(df, columns=['gender'], drop_first=True)
-
-# Преобразование gender_Male в целочисленный тип
-df_encoded['gender_Male'] = df_encoded['gender_Male'].astype(int)
-
-# Вывод результата
-print(df_encoded.head())
+  <h2>24 марта 2026</h2>
+<p>Показатель точности модели по выдаче кредита - 0.69%</p>
+<p>Показатель точности заключения страхования КАСКО - 98.50%</p>
