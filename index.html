@@ -73,3 +73,16 @@
   <h2>18 марта 2026</h2>
 <p>Студент занимался 5 часов<p>
 <p>Прогноз баллов: 50.23<p>
+
+  import pandas as pd
+
+# Создание датасета с такими же данными
+data = {
+    'age': [36, 21, 38, 41, 40],
+    'gender': ['Female', 'Male', 'Male', 'Male', 'Female'],
+    'salary': [24842, 57922, 22381, 79001, 62060],
+    'credit_approved': [1, 0, 1, 1, 1]
+}
+
+df = pd.DataFrame(data)
+print(df.head())
