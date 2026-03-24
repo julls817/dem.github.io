@@ -98,3 +98,25 @@ df_encoded = pd.get_dummies(df, columns=['gender'], drop_first=True)
 
 print("\nПосле кодирования:")
 print(df_encoded.head())
+
+
+  import pandas as pd
+
+# Создание исходного датасета
+data = {
+    'age': [36, 21, 38, 41, 40],
+    'gender': ['Female', 'Male', 'Male', 'Male', 'Female'],
+    'salary': [24842, 57922, 22381, 79001, 62060],
+    'credit_approved': [1, 0, 1, 1, 1]
+}
+
+df = pd.DataFrame(data)
+
+# One-Hot Encoding с удалением первого столбца
+df_encoded = pd.get_dummies(df, columns=['gender'], drop_first=True)
+
+# Преобразование gender_Male в целочисленный тип
+df_encoded['gender_Male'] = df_encoded['gender_Male'].astype(int)
+
+# Вывод результата
+print(df_encoded.head())
